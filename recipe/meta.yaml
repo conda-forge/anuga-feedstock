@@ -12,12 +12,13 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
   skip: True  # [py<3.6]
 
 requirements:
   build:
     - {{ compiler('c') }}        # [not win]
+    - {{ stdlib("c") }}          # [not win]
     - {{ compiler('cxx') }}      # [not win]
     - m2w64-gcc                  # [win]
     - libpython                  # [win]
@@ -33,7 +34,6 @@ requirements:
 
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - dill
     - future
     - gdal >=3.0.4

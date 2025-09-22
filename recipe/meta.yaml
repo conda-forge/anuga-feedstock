@@ -13,13 +13,14 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . -vv
   number: 1
-  skip: True  # [py<3.6]
+  skip: True  # [py<3.9]  # (1) Requires Python 3.9 or higher
 
 requirements:
   build:
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('cxx') }}      # [not win]
-    - m2w64-gcc                  # [win]
+    - gcc_win-64                 # [win]
+    - gxx_win-64                 # [win]
     - libpython                  # [win]
     - llvm-openmp  # [osx]
     - libgomp      # [linux]
@@ -58,8 +59,8 @@ test:
 about:
   home: https://github.com/anuga-community/anuga_core
   summary: A set of python modules for tsunami and flood modelling
-  license: AGPL-1.0-or-later
-  license_file: LICENCE.txt
+  license: Based on Apache License 2.0
+  license_file: LICENSE.txt
 
 extra:
   recipe-maintainers:

@@ -33,7 +33,7 @@ requirements:
     - libpython  # [win]
     - pip
     - cython
-    - numpy
+    - numpy >=2.0.2
 
 
   run:

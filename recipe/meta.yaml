@@ -49,9 +49,11 @@ requirements:
     - matplotlib-base
     - meshpy
     - netcdf4
+    - pandas
     - Pmw
     - pymetis
     - pytest
+    - pyproj
     - pytz 
     - scipy
     - utm

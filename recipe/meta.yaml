@@ -44,6 +44,7 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - affine
     - dill
     - gdal >=3.0.4
     - matplotlib-base
@@ -57,7 +58,7 @@ requirements:
     - pytz 
     - scipy
     - utm
-
+    - xarray
 test:
   imports:
     - anuga

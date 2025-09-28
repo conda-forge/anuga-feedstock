@@ -33,6 +33,8 @@ requirements:
     - libpython  # [win]
     - pip
     - cython
+    - meson-python
+    - ninja  
     - numpy >=2.0.0
 
 

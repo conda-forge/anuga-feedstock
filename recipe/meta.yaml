@@ -13,7 +13,7 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  skip: True  # [py<3.9]  # (1) Requires Python 3.9 or higher
+  skip: True  # [py<3.11]
 
 requirements:
   build:

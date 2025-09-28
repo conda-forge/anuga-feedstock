@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/anuga-feedstock
 
 Home: https://github.com/anuga-community/anuga_core
 
-Package license: Based on Apache License 2.0
+Package license: Apache-2.0
 
 Summary: A set of python modules for tsunami and flood modelling
 

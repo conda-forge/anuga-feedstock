@@ -22,8 +22,7 @@ requirements:
     - gcc_win-64                 # [win]
     - gxx_win-64                 # [win]
     - libpython                  # [win]
-    - llvm-openmp  # [osx]
-    - libgomp      # [linux]
+    - {{ stdlib("c") }}
     - toml
     - meson-python
     - ninja
@@ -33,7 +32,7 @@ requirements:
     - libpython  # [win]
     - pip
     - cython
-    - numpy >=2.0.2
+    - numpy >=2.0.0
 
 
   run:

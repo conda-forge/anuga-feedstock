@@ -25,6 +25,7 @@ requirements:
     - libpython                  # [win]
     - {{ stdlib("c") }}
     - toml
+    - cython
     - meson-python
     - ninja
 
@@ -32,6 +33,7 @@ requirements:
     - python 
     - libpython  # [win]
     - pip
+    - toml
     - cython
     - meson-python
     - ninja  

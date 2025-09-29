@@ -1,52 +1,66 @@
 {% set name = "anuga" %}
-{% set version = "3.1.9" %}
-{% set sha = "62c45b025272bd33318b33d2fa51a9134e84254d13e8ab3814be697cdcc5074c" %}
+{% set version = "3.2.0" %}
+{% set sha = "a6c7fd2d4e22d6f8befd23f6a502eb6e96da99ff49816fac3e09c3f2aeb41a17" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/anuga-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/anuga-{{ version }}.tar.gz
   sha256: {{ sha }}
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
-  skip: True  # [py<3.6]
+  number: 0
+  skip: True  # [py<3.9]
+
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - m2w64-gcc                  # [win]
+    - {{ compiler('c') }}    # [ not win ]
+    - {{ compiler('cxx') }}  # [ not win ]
+    - {{ stdlib("c") }}      # [ not win ]
+    - gcc_win-64                 # [win]
+    - gxx_win-64                 # [win]
     - libpython                  # [win]
-    - llvm-openmp  # [osx]
-    - libgomp      # [linux]
+    - pip
+    - toml
+    - cython
+    - meson-python
+    - ninja
+    - numpy >=2.0.0
 
   host:
     - python 
-    - libpython  # [win]
+    - gcc_win-64                 # [win]
+    - gxx_win-64                 # [win]
+    - libpython                  # [win]
     - pip
+    - toml
     - cython
-    - numpy
+    - meson-python
+    - ninja  
+    - numpy >=2.0.0
+
 
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - affine
     - dill
-    - future
     - gdal >=3.0.4
     - matplotlib-base
     - meshpy
     - netcdf4
-    - Pmw
+    - pandas
     - pymetis
     - pytest
+    - pyproj
     - pytz 
     - scipy
     - utm
-
+    - xarray
 test:
   imports:
     - anuga
@@ -58,8 +72,8 @@ test:
 about:
   home: https://github.com/anuga-community/anuga_core
   summary: A set of python modules for tsunami and flood modelling
-  license: AGPL-1.0-or-later
-  license_file: LICENCE.txt
+  license: Apache-2.0
+  license_file: LICENSE.txt
 
 extra:
   recipe-maintainers:

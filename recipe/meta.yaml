@@ -12,18 +12,21 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install pmw -vv
   number: 0
   skip: True  # [py<3.9]
 
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
+    - {{ compiler('c') }}    # [ not win ]
+    - {{ compiler('cxx') }}  # [ not win ]
+    - {{ stdlib("c") }}      # [ not win ]
+    - {{ stdlib("cxx") }}    # [ not win ]
     - gcc_win-64                 # [win]
     - gxx_win-64                 # [win]
     - libpython                  # [win]
-    - {{ stdlib("c") }}
+    - pip
     - toml
     - cython
     - meson-python
@@ -32,7 +35,9 @@ requirements:
 
   host:
     - python 
-    - libpython  # [win]
+    - gcc_win-64                 # [win]
+    - gxx_win-64                 # [win]
+    - libpython                  # [win]
     - pip
     - toml
     - cython
@@ -51,7 +56,6 @@ requirements:
     - meshpy
     - netcdf4
     - pandas
-    - Pmw
     - pymetis
     - pytest
     - pyproj

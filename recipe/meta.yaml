@@ -12,7 +12,6 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  script: {{ PYTHON }} -m pip install pmw -vv
   number: 0
   skip: True  # [py<3.9]
 
@@ -22,7 +21,6 @@ requirements:
     - {{ compiler('c') }}    # [ not win ]
     - {{ compiler('cxx') }}  # [ not win ]
     - {{ stdlib("c") }}      # [ not win ]
-    - {{ stdlib("cxx") }}    # [ not win ]
     - gcc_win-64                 # [win]
     - gxx_win-64                 # [win]
     - libpython                  # [win]

@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.2.0" %}
-{% set sha = "a6c7fd2d4e22d6f8befd23f6a502eb6e96da99ff49816fac3e09c3f2aeb41a17" %}
+{% set version = "3.3.0" %}
+{% set sha = "550138efaabac6a3ec5c52f0d937e3039ddc7d3ded778fe3a5f4a9cfd1b2c1fb" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  skip: True  # [py<3.9]
+  skip: true  # [py<3.9]
 
 
 requirements:
@@ -32,7 +32,7 @@ requirements:
     - numpy >=2.0.0
 
   host:
-    - python 
+    - python
     - gcc_win-64                 # [win]
     - gxx_win-64                 # [win]
     - libpython                  # [win]
@@ -40,7 +40,7 @@ requirements:
     - toml
     - cython
     - meson-python
-    - ninja  
+    - ninja
     - numpy >=2.0.0
 
 
@@ -57,7 +57,7 @@ requirements:
     - pymetis
     - pytest
     - pyproj
-    - pytz 
+    - pytz
     - scipy
     - utm
     - xarray

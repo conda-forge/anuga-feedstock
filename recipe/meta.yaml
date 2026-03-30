@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.3.0" %}
-{% set sha = "550138efaabac6a3ec5c52f0d937e3039ddc7d3ded778fe3a5f4a9cfd1b2c1fb" %}
+{% set version = "3.3.1" %}
+{% set sha = "26ddd0463efbd82133f6b8ab3619651d1eaac5c3b3361ac30c5bdffb7fd5423b" %}
 
 package:
   name: {{ name|lower }}
@@ -39,6 +39,9 @@ requirements:
     - meshpy >=2022.1
     - netcdf4 >=1.6
     - scipy >=1.11
+    - utm
+    - xarray
+    - libgomp  # [linux]
 
   run_constrained:
     - mpi4py
@@ -48,7 +51,6 @@ requirements:
     - rasterio
     - fiona
     - shapely
-    - xarray
     - pandas
     - openpyxl
 
@@ -56,7 +58,7 @@ test:
   imports:
     - anuga
   commands:
-    - pytest --pyargs anuga --run-fast -x -q
+    - pytest --pyargs anuga -x -q -m "not slow" -p no:warnings
   requires:
     - pytest
 

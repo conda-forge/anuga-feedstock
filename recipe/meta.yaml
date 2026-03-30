@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.2.0" %}
-{% set sha = "a6c7fd2d4e22d6f8befd23f6a502eb6e96da99ff49816fac3e09c3f2aeb41a17" %}
+{% set version = "3.3.0" %}
+{% set sha = "550138efaabac6a3ec5c52f0d937e3039ddc7d3ded778fe3a5f4a9cfd1b2c1fb" %}
 
 package:
   name: {{ name|lower }}
@@ -11,61 +11,52 @@ source:
   sha256: {{ sha }}
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-build-isolation -vv
   number: 0
-  skip: True  # [py<3.9]
-
+  skip: True  # [py<3.10]
 
 requirements:
   build:
-    - {{ compiler('c') }}    # [ not win ]
-    - {{ compiler('cxx') }}  # [ not win ]
-    - {{ stdlib("c") }}      # [ not win ]
-    - gcc_win-64                 # [win]
-    - gxx_win-64                 # [win]
-    - libpython                  # [win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
+
+  host:
+    - python
     - pip
-    - toml
     - cython
     - meson-python
     - ninja
     - numpy >=2.0.0
-
-  host:
-    - python 
-    - gcc_win-64                 # [win]
-    - gxx_win-64                 # [win]
-    - libpython                  # [win]
-    - pip
-    - toml
-    - cython
-    - meson-python
-    - ninja  
-    - numpy >=2.0.0
-
+    - pybind11
+    - libpython  # [win]
 
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - affine
-    - dill
-    - gdal >=3.0.4
-    - matplotlib-base
-    - meshpy
-    - netcdf4
-    - pandas
-    - pymetis
-    - pytest
-    - pyproj
-    - pytz 
-    - scipy
-    - utm
+    - dill >=0.3.7
+    - matplotlib-base >=3.7
+    - meshpy >=2022.1
+    - netcdf4 >=1.6
+    - scipy >=1.11
+
+  run_constrained:
+    - mpi4py
+    - pymetis >=2023.1
+    - pyproj >=3.6
+    - affine >=2.4
+    - rasterio
+    - fiona
+    - shapely
     - xarray
+    - pandas
+    - openpyxl
+
 test:
   imports:
     - anuga
   commands:
-    - pytest --pyargs anuga
+    - pytest --pyargs anuga --run-fast -x -q
   requires:
     - pytest
 

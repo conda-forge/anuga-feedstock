@@ -23,6 +23,9 @@ requirements:
 
   host:
     - python
+    - gcc_win-64                 # [win]
+    - gxx_win-64                 # [win]
+    - libpython                  # [win]
     - pip
     - cython
     - meson-python

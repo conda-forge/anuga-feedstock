@@ -42,7 +42,8 @@ requirements:
     - scipy >=1.11
     - utm
     - xarray
-    - libgomp  # [linux]
+    - if: linux
+      then: libgomp
   run_constraints:
     - mpi4py
     - pymetis >=2023.1

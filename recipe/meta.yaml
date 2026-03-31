@@ -17,9 +17,11 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ stdlib("c") }}
+    - {{ compiler('c') }}    # [not win]
+    - {{ compiler('cxx') }}  # [not win]
+    - {{ stdlib("c") }}      # [not win]
+    - gcc_win-64             # [win]
+    - gxx_win-64             # [win]
 
   host:
     - python

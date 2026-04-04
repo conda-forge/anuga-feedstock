@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.3.1" %}
-{% set sha = "26ddd0463efbd82133f6b8ab3619651d1eaac5c3b3361ac30c5bdffb7fd5423b" %}
+{% set version = "3.3.2" %}
+{% set sha = "8defca4834c488604fb56404c4dcfa3a74279f8f7f8c69a6ffbfe9e06143c926" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . --no-build-isolation -vv
   number: 0
-  skip: True  # [py<3.10]
+  skip: true  # [py<3.10]
 
 requirements:
   build:

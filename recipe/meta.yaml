@@ -1,6 +1,6 @@
 {% set name = "anuga" %}
-{% set version = "3.3.9" %}
-{% set sha = "e63cfd00c9264192e1a513bc156ceb2352463129865f692cc86da02843dc148e" %}
+{% set version = "3.3.10" %}
+{% set sha = "2a6236b4d4020d03cf127a9a835a41a703929a22f6ca6e44f3b015df2e0d28e8" %}
 
 package:
   name: {{ name|lower }}

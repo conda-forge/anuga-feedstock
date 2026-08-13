@@ -1,14 +1,12 @@
-{% set name = "anuga" %}
 {% set version = "3.3.10" %}
-{% set sha = "2a6236b4d4020d03cf127a9a835a41a703929a22f6ca6e44f3b015df2e0d28e8" %}
 
 package:
-  name: {{ name|lower }}
+  name: anuga
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/anuga-{{ version }}.tar.gz
-  sha256: {{ sha }}
+  url: https://pypi.org/packages/source/a/anuga/anuga-{{ version }}.tar.gz
+  sha256: 2a6236b4d4020d03cf127a9a835a41a703929a22f6ca6e44f3b015df2e0d28e8
 
 build:
   script: {{ PYTHON }} -m pip install . --no-build-isolation -vv

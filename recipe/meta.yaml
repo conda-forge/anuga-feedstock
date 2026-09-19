@@ -1,4 +1,4 @@
-{% set version = "4.0.0" %}
+{% set version = "4.0.1" %}
 
 package:
   name: anuga
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/a/anuga/anuga-{{ version }}.tar.gz
-  sha256: c92d2a72fbdff7fb4d697f5f29625f2b9749f73caf7280cddc1cb2adb1fe9ac2
+  sha256: d58642f3ef993e9e7c82846405bc1760ded8f2a546a1ee091e4ccfa8d79a20fc
 
 build:
   script: {{ PYTHON }} -m pip install . --no-build-isolation -vv

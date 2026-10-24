@@ -57,11 +57,9 @@ test:
   imports:
     - anuga
   commands:
-    # test_import_anuga_needs_no_triangulator asserts stdout == "None", but import
-    # anuga prints a "Could not import mpi4py" warning when mpi4py is absent (4.0.1).
     # test_burn_in_runs_inlet_only reads a CSV inlet line, which 4.1.0 refuses without
     # fiona (not in this test env); fixed upstream in anuga_core#456 -- drop after 4.1.0.
-    - pytest --pyargs anuga -x -q -m "not slow" -p no:warnings -k "not test_import_anuga_needs_no_triangulator and not test_burn_in_runs_inlet_only"
+    - pytest --pyargs anuga -x -q -m "not slow" -p no:warnings -k "not test_burn_in_runs_inlet_only"
   requires:
     - pytest
     - xorg-libx11  # [linux]
